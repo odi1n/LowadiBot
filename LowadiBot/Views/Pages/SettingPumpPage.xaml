@@ -1,0 +1,240 @@
+﻿<Page x:Class="LowadiBot.Views.Pages.SettingPumpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:LowadiBot.Views.Pages"
+
+      mc:Ignorable="d"
+      Title="SettingPumpPage"
+
+      d:DesignHeight="800" d:DesignWidth="900">
+
+    <Page.Resources>
+
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" MinWidth="275" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Column="0" Grid.Row="0"
+                  Margin="5"
+                  Header="Общие">
+
+            <StackPanel>
+                <CheckBox Content="Игры" />
+                <CheckBox Content="Урок с 2-х лет" />
+                <CheckBox Content="Урок после трен." />
+                <CheckBox Content="С абортами" />
+                <CheckBox Content="Паузы" />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="0"
+                  Margin="5"
+                  Header="Ограничения">
+            <StackPanel>
+                <ComboBox />
+                <TextBox />
+                <TextBlock Text="Случки с" />
+                <ComboBox />
+                <TextBlock Text="Здоровье" />
+                <ComboBox />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Grid.Row="0"
+                  Margin="5"
+                  Header="Случки/Роды">
+            <StackPanel>
+                <TextBlock Text="Число случек от кобыл в парте" />
+                <TextBox />
+                <TextBlock Text="Имя жен" />
+                <TextBox />
+                <TextBlock Text="Имя муж" />
+                <TextBox />
+                <CheckBox Content="Случайные имена" />
+                <CheckBox Content="Ставить ГП" />
+                <TextBlock Text="Аффикс" />
+                <TextBox />
+                <TextBlock Text="Завод" />
+                <TextBox />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Column="3" Grid.Row="0"
+                  Margin="5"
+                  Header="КСК">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" MinWidth="20"/>
+                        <ColumnDefinition Width="*" MinWidth="20"/>
+                        <ColumnDefinition Width="*" MinWidth="20"/>
+                        <ColumnDefinition Width="*" MinWidth="20"/>
+                        <ColumnDefinition Width="*" MinWidth="20"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <CheckBox Grid.Column="0" Grid.Row="0">
+                        <Image Source="fourrage.png" Height="20"/>
+                    </CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="0">
+                        <Image Source="avoine.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="0">
+                        <Image Source="carotte.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="0">
+                        <Image Source="selle.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="0">
+                        <Image Source="bride.png" Height="20" />
+                    </CheckBox>
+
+                    <CheckBox Grid.Column="0" Grid.Row="1">
+                        <Image Source="tapis.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="1">
+                        <Image Source="bonnet.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="1">
+                        <Image Source="bandes.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="1">
+                        <Image Source="abreuvoir.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="1">
+                        <Image Source="douche.png" Height="20" />
+                    </CheckBox>
+
+                    <CheckBox Grid.Column="0" Grid.Row="2">
+                        <Image Source="specialisation-classique.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="2">
+                        <Image Source="specialisation-western.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="2">
+                        <Image Source="localisation-foret.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="2">
+                        <Image Source="localisation-montagne.png" Height="20" />
+                    </CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="2">
+                        <Image Source="localisation-plage.png" Height="20" />
+                    </CheckBox>
+
+                </Grid>
+
+                <TextBlock Text="Длительность" />
+                <ComboBox />
+                <CheckBox Content="Резервы" />
+                <CheckBox Content="Свой" />
+                <TextBlock Text="Id:" />
+                <TextBox />
+                <CheckBox Content="Покупка еды" />
+                <CheckBox Content="Покопка моркови/Смеси" />
+                <ComboBox />
+                <ComboBox />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.ColumnSpan="4" Grid.Row="1"
+                  Margin="5"
+                  Header="Покупка продажа">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="150" />
+                    <ColumnDefinition Width="Auto" MinWidth="150" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            Margin="0,0,5,0">
+                    <TextBlock Text="Специализация" />
+                    <ComboBox />
+                    <TextBlock Text="Аммуниция" />
+                    <ComboBox />
+                    <CheckBox Content="Налобник" />
+                    <CheckBox Content="Бинты" />
+                    <CheckBox Content="Хлыст" />
+                    <TextBlock Text="Схема" />
+                    <ComboBox />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Тип тренировки" />
+                    <ComboBox />
+                    <CheckBox Content="Выписывать из КСК" />
+                    <CheckBox Content="Тыжеловозы" />
+                    <CheckBox Content="Параллельная пара" />
+                </StackPanel>
+
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ListView Grid.Column="0"
+                              Margin="5,0" />
+                    <ListView Grid.Column="1"
+                              Margin="5,0" />
+                    <StackPanel Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Button Content="+"
+                                Width="30" Height="30" />
+                        <Button Content="-"
+                                Width="30" Height="30" />
+                        <Button Content="Upd"
+                                Width="30" Height="30" />
+                    </StackPanel>
+                    <ListView Grid.Column="3"
+                              Margin="5,0" />
+                </Grid>
+            </Grid>
+
+        </GroupBox>
+
+        <Grid Grid.ColumnSpan="4" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Назад" />
+            <Button Grid.Column="1"
+                    Content="Применить" />
+            <Button Grid.Column="2"
+                    Content="Сбросить" />
+            <Button Grid.Column="3"
+                    Content="Сохранить в файл" />
+            <Button Grid.Column="4"
+                    Content="Загрузить из файл" />
+
+        </Grid>
+
+    </Grid>
+</Page>

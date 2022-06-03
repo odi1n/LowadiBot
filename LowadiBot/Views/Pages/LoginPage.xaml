@@ -1,0 +1,140 @@
+﻿<Page x:Class="LowadiBot.Views.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:lang="clr-namespace:LowadiBot.Langs" xmlns:fa5="http://schemas.fontawesome.com/icons/"
+      xmlns:pages="clr-namespace:LowadiBot.ViewModels.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="LoginPage">
+
+    <Page.DataContext>
+        <pages:LoginPageViewModel />
+    </Page.DataContext>
+    <Page.Resources>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="IsSelected"
+                    Value="{Binding IsSelected}" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="AutoGenerateColumns" Value="False" />
+
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Padding" Value="7" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="SeparatorVisibility" Value="Visible" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="RowHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="Width" Value="0" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Padding" Value="4" />
+                        <Setter Property="BorderBrush" Value="Transparent" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridCell">
+                                    <Border Padding="{TemplateBinding Padding}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid
+            MinWidth="250"
+            MinHeight="465"
+            Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="35" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <DataGrid ItemsSource="{Binding Accounts}"
+                          SelectionMode="Extended"
+                          BorderThickness="0"
+                          CanUserAddRows="False"
+                          Margin="5"
+                          IsReadOnly="True">
+
+
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="IsSelected"
+                                    Value="{Binding IsSelected}" />
+                        </Style>
+                    </DataGrid.Resources>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Логин"
+                                            Binding="{Binding Login}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Пароль"
+                                            Binding="{Binding Password}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Прокси"
+                                            Binding="{Binding Proxy}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Прокси логин"
+                                            Binding="{Binding ProxyLogin}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Прокси пароль"
+                                            Binding="{Binding ProxyPassword}"
+                                            Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Style="{StaticResource ButtonStyleBase}"
+                        Content="{x:Static lang:Lang.F_Enter}" />
+                <Button Grid.Column="1"
+                        Style="{StaticResource ButtonStyleBase}"
+                        Content="{x:Static lang:Lang.F_Addition}"
+                        Command="{Binding AdditioAccount}" />
+                <Button Grid.Column="2"
+                        Style="{StaticResource ButtonStyleBase}"
+                        Content="{x:Static lang:Lang.F_Remove}" />
+            </Grid>
+
+        </Grid>
+
+
+    </Grid>
+</Page>
