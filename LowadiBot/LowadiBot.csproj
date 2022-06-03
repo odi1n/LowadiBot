@@ -185,7 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Forms\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Themes\" />
