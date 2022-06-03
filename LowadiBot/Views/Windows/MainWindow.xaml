@@ -20,7 +20,7 @@
 
         Height="680" Width="980"
         MinHeight="620" MinWidth="980"
-        Icon="favicon.png">
+        Icon="favicon.ico">
 
     <Window.DataContext>
         <vm:MainWIndowViewModel />

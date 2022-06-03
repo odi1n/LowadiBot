@@ -38,6 +38,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Mvvm, Version=21.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30">
       <HintPath>..\packages\DevExpressMvvm.21.1.5\lib\net452\DevExpress.Mvvm.dll</HintPath>
@@ -192,6 +195,8 @@
     <Resource Include="Assets\favicon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="favicon.ico" />
+    <Resource Include="Views\Windows\favicon.ico" />
     <Resource Include="Views\Pages\localisation-plage.png" />
     <Resource Include="Views\Pages\localisation-montagne.png" />
     <Resource Include="Views\Pages\localisation-foret.png" />

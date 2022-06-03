@@ -25,7 +25,7 @@ namespace LowadiBot
         public MainWindow()
         {
             InitializeComponent();
-            this.MainFrame.Content = new SettingPumpPage();
+            this.MainFrame.Content = new SettingDriverPage();
         }
     }
 }
