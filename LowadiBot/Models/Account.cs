@@ -27,7 +27,7 @@ namespace LowadiBot.Models
             ErrorModels errorModels = await lowadiApi.Login(this.Login, this.Password);
             if (errorModels.Errors.Count > 0)
             {
-                MessageBox.Show("Не правильный логин или пароль.", "Проверьте данные", MessageBoxButton.OK,
+                MessageBox.Show( Login + " - не правильный логин или пароль.", "Проверьте данные", MessageBoxButton.OK,
                     MessageBoxImage.Warning);
                 return false;
             }

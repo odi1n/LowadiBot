@@ -37,6 +37,7 @@ namespace LowadiBot.ViewModels.Pages
             var data = (AuthWindowViewModel)authWindow.DataContext;
             if (data.Account.LowadiApi == null)
                 return;
+
             if (Accounts.FirstOrDefault(x => x.Login == data.Account.Login) != null)
             {
                 MessageBox.Show("Такой аккаунт уже есть", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
