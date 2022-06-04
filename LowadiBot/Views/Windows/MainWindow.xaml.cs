@@ -45,6 +45,7 @@ namespace LowadiBot
         {
             LoginPageViewModel.Accounts = Files.OpenModel<Account>();
             this.MainFrame.Content = new LoginPage();
+            // this.MainFrame.Content = new DriverPage();
         }
     }
 }
