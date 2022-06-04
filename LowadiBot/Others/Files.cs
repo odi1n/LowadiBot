@@ -19,20 +19,20 @@ namespace LowadiBot.Others
         private static readonly string SettFullPath =
             Path.Combine(new string[] { MyDirectory, DirectorySave, SettingPath });
 
-        public static void Save(string content)
+        public static void Save(string content, string path = null)
         {
-            File.WriteAllText(AccFullPath, content);
+            File.WriteAllText(path ?? AccFullPath, content);
         }
 
-        public static ObservableCollection<T> OpenModel<T>()
+        public static ObservableCollection<T> OpenModel<T>(string path = null)
         {
-            if (!Directory.Exists(DirectorySave))
+            if (!Directory.Exists(DirectorySave) && path == null)
                 Directory.CreateDirectory(DirectorySave);
 
             ObservableCollection<T> accounts = new ObservableCollection<T>();
-            if (File.Exists(AccFullPath))
+            if (File.Exists(path ?? AccFullPath))
             {
-                string data = File.ReadAllText(AccFullPath);
+                string data = File.ReadAllText(path ?? AccFullPath);
                 accounts = JsonConvert.Deserialize<ObservableCollection<T>>(data);
             }
 

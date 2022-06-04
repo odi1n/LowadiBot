@@ -6,8 +6,10 @@
       xmlns:lang="clr-namespace:LowadiBot.Langs" xmlns:fa5="http://schemas.fontawesome.com/icons/"
       xmlns:pages="clr-namespace:LowadiBot.ViewModels.Pages"
       mc:Ignorable="d"
-      d:DesignHeight="600" d:DesignWidth="600"
-      Title="LoginPage">
+
+      Title="LoginPage"
+
+      d:DesignHeight="600" d:DesignWidth="600">
 
     <Page.DataContext>
         <pages:LoginPageViewModel />
@@ -73,18 +75,19 @@
             Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="35" />
+                <RowDefinition Height="70" />
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
 
-                <DataGrid ItemsSource="{Binding Accounts}"
+                <DataGrid ItemsSource="{Binding Accounts,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}"
                           SelectionMode="Extended"
                           BorderThickness="0"
                           CanUserAddRows="False"
                           Margin="5"
                           IsReadOnly="True">
-
 
                     <DataGrid.Resources>
                         <Style TargetType="DataGridRow">
@@ -103,6 +106,15 @@
                         <DataGridTextColumn Header="Сохранить"
                                             Binding="{Binding IsSave}"
                                             Width="Auto" />
+                        <DataGridTemplateColumn
+                            Width="90">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Настройки"
+                                            Width="75" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
@@ -113,15 +125,28 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0"
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Column="0" Grid.RowSpan="2"
                         Content="{x:Static lang:Lang.F_Enter}"
                         Command="{Binding AuthAccountsCommand}" />
-                <Button Grid.Column="1"
+                <Button Grid.Column="1" Grid.Row="0"
                         Content="{x:Static lang:Lang.F_Addition}"
                         Command="{Binding AdditionAccountCommand}" />
-                <Button Grid.Column="2"
+                <Button Grid.Column="1" Grid.Row="1"
                         Content="{x:Static lang:Lang.F_Remove}"
                         Command="{Binding DeleteAccountCommand}" />
+                <Button Grid.Column="2" Grid.Row="0"
+                        Content="Сохранить в файл"
+                        Command="{Binding SaveAccountsCommand}" />
+                <Button Grid.Column="2" Grid.Row="1"
+                        Content="Загрузить с файла"
+                        Command="{Binding LoadAccountsCommand}" />
+
+
             </Grid>
 
         </Grid>
