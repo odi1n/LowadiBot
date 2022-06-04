@@ -1,0 +1,64 @@
+﻿<Window x:Class="LowadiBot.Views.Windows.ManagerAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:LowadiBot.Views.Windows"
+        xmlns:vm="clr-namespace:LowadiBot.ViewModels.Windows"
+        xmlns:conv="clr-namespace:LowadiBot.ValueConverters"
+        mc:Ignorable="d"
+
+        WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+
+        Title="{Binding Account.Login, StringFormat=Менеджер аккаунта - {0}}"
+
+        Height="Auto" MinHeight="500"
+        Width="450" MinWidth="450">
+    <Window.DataContext>
+        <vm:ManagerAccountWindowViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <conv:EnumConverter x:Key="EnumConverter" />
+    </Window.Resources>
+
+
+    <StackPanel>
+        <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   Text="{Binding Equus, StringFormat=Экю: {0:#,#.0}}" />
+
+        <ItemsControl x:Name="Test" ItemsSource="{Binding Path=ItemsInfos}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" MinWidth="200" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   VerticalAlignment="Center">
+                            <Run Text="{Binding Path=ItemsType, Converter={StaticResource EnumConverter}}" />
+                            <Run Text="{Binding Path=Count, StringFormat=: {0}}" />
+                        </TextBlock>
+                        <TextBox Grid.Column="1"
+                                 Text="{Binding PurchaseCount, Mode=TwoWay}"
+                                 PreviewTextInput="NumberValidationTextBox" />
+                        <Button Grid.Column="2"
+                                Content="Купить"
+                                Command="{Binding ElementName=Test, Path=DataContext.BuyCommand}"
+                                CommandParameter="{Binding }" />
+                        <Button Grid.Column="3"
+                                Content="Продать"
+                                Command="{Binding ElementName=Test, Path=DataContext.SellCommand}"
+                                CommandParameter="{Binding }" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </StackPanel>
+</Window>

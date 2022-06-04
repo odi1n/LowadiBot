@@ -80,7 +80,8 @@
 
             <Grid Grid.Row="0">
 
-                <DataGrid ItemsSource="{Binding Accounts,
+                <DataGrid x:Name="DataGrid"
+                          ItemsSource="{Binding Accounts,
                                         Mode=TwoWay,
                                         UpdateSourceTrigger=PropertyChanged}"
                           SelectionMode="Extended"
@@ -110,8 +111,10 @@
                             Width="90">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Настройки"
-                                            Width="75" />
+                                    <Button Content="Менеджер"
+                                            Width="75"
+                                            Command="{Binding ElementName=DataGrid, Path=DataContext.ManagerAccountCommand}"
+                                            CommandParameter="{Binding}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

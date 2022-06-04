@@ -29,6 +29,7 @@ namespace LowadiBot.ViewModels.Pages
         public ICommand AuthAccountsCommand { get; set; }
         public ICommand SaveAccountsCommand { get; set; }
         public ICommand LoadAccountsCommand { get; set; }
+        public ICommand<Account> ManagerAccountCommand { get; set; }
 
         public LoginPageViewModel()
         {
@@ -37,6 +38,7 @@ namespace LowadiBot.ViewModels.Pages
             AuthAccountsCommand = new AsyncCommand(() => AuthAccounts());
             SaveAccountsCommand = new DelegateCommand(SaveAccounts);
             LoadAccountsCommand = new DelegateCommand(LoadAccounts);
+            ManagerAccountCommand = new DelegateCommand<Account>(x => ManagerAccount(x));
         }
 
         private void AdditionAccount()
@@ -99,6 +101,22 @@ namespace LowadiBot.ViewModels.Pages
                 foreach (Account account in accounts)
                     Accounts.Add(account);
             }
+        }
+
+        private void ManagerAccount(Account account)
+        {
+            if (account.LowadiApi == null)
+            {
+                MessageBox.Show("Аккаунт не авторизован. Нужно выбрать аккаунт и авторизовать его",
+                    "Информация", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+                return;
+            }
+
+            ManagerAccountWindowViewModel managerAccountWindowViewModel = new ManagerAccountWindowViewModel(account);
+            ManagerAccountWindow managerAccountWindow = new ManagerAccountWindow() {
+                DataContext = managerAccountWindowViewModel,
+            };
+            managerAccountWindow.ShowDialog();
         }
     }
 }
