@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using DevExpress.Mvvm;
-using LowadiBot.ViewModels.Pages;
-using LowadiBot.ViewModels.Windows.Base;
+using Lowadi;
+using Lowadi.Models;
+using Lowadi.Models.Type;
+using LowadiBot.Models;
+using LowadiBot.Views.Windows;
+using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 
 namespace LowadiBot.ViewModels.Windows
 {
@@ -18,19 +22,42 @@ namespace LowadiBot.ViewModels.Windows
 
         public Account Account { get; set; }
 
-        public IEnumerable<Server> Servers { get; set; } =
-            Enum.GetValues(typeof(Server))
-                .Cast<Server>();
+        public IEnumerable<ServerType> Servers { get; set; } = Enum.GetValues(typeof(ServerType))
+            .Cast<ServerType>();
+
+        public ICommand AuthCommand { get; set; }
 
         public AuthWindowViewModel()
         {
-            this.Account = new Account();
-        }
-    }
+            Account = new Account();
 
-    public enum Server
-    {
-        [Description("Русский")] RU,
-        [Description("English")] EN
+
+            AuthCommand = new DelegateCommand(() => Auth());
+        }
+
+        public async Task Auth()
+        {
+            if (!Validation())
+                return;
+
+            if (await Account.Auth())
+                Close();
+        }
+
+        private bool Validation()
+        {
+            if (string.IsNullOrEmpty(Account.Login) || string.IsNullOrEmpty(Account.Password))
+            {
+                MessageBox.Show("Проверьте указаны ли данные", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void Close()
+        {
+            Application.Current.Windows.OfType<AuthWindow>().FirstOrDefault()?.Close();
+        }
     }
 }

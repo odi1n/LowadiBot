@@ -7,12 +7,15 @@
         xmlns:lang="clr-namespace:LowadiBot.Langs"
         xmlns:conv="clr-namespace:LowadiBot.ValueConverters"
 
-
         mc:Ignorable="d"
         Title="Авторизация"
-        WindowStartupLocation="CenterScreen"
-        Height="520" Width="300"
-        MinHeight="500" MinWidth="300">
+        WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+
+        VerticalAlignment="Center" VerticalContentAlignment="Center"
+
+        Height="500" Width="300"
+        MinHeight="500" MinWidth="300"
+        MaxHeight="500" MaxWidth="300">
 
     <Window.DataContext>
         <vm:AuthWindowViewModel />
@@ -22,22 +25,19 @@
         <conv:EnumConverter x:Key="EnumConverter" />
     </Window.Resources>
 
-    <StackPanel Grid.Row="2"
-                Margin="5">
-        <TextBlock Text="{x:Static lang:Lang.F_Auth_Login}"
-                   Style="{StaticResource TextBlockStyleBase}" />
-        <TextBox Text="{Binding Account.Login}"
-                 Style="{StaticResource TextBoxStyleBase}" />
-        <TextBlock Text="{x:Static lang:Lang.F_Auth_Password}"
-                   Style="{StaticResource TextBlockStyleBase}" />
+    <StackPanel Margin="5" VerticalAlignment="Center">
+        <TextBlock Text="{x:Static lang:Lang.F_Auth_Login}" />
+        <TextBox
+            Text="{Binding Account.Login,
+            ValidatesOnDataErrors=True,
+            UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Text="{x:Static lang:Lang.F_Auth_Password}" />
         <PasswordBox Name="PasswordText"
-                     Style="{StaticResource PasswordBoxStyleBase}" />
+                     PasswordChanged="PasswordBox_OnPasswordChanged" />
         <CheckBox Content="{x:Static lang:Lang.F_Auth_Save}"
-                  IsChecked="{Binding Account.IsSave}"
-                  Style="{StaticResource CheckBoxStyleBase}" />
+                  IsChecked="{Binding Account.IsSave}" />
         <CheckBox Content="{x:Static lang:Lang.F_Auth_IsProxy}"
-                  IsChecked="{Binding Account.IsProxy}"
-                  Style="{StaticResource CheckBoxStyleBase}" />
+                  IsChecked="{Binding Account.IsProxy}" />
 
         <StackPanel>
             <StackPanel.Style>
@@ -52,26 +52,18 @@
             </StackPanel.Style>
 
 
-            <Separator Style="{StaticResource SeparatorStyleBase}" />
-            <TextBlock Text="{x:Static lang:Lang.F_Auth_Proxy}"
-                       Style="{StaticResource TextBlockStyleBase}" />
-            <TextBox Text="{Binding Account.Proxy}"
-                     Style="{StaticResource TextBoxStyleBase}" />
-            <TextBlock Text="{x:Static lang:Lang.F_Auth_ProxyLogin}"
-                       Style="{StaticResource TextBlockStyleBase}" />
-            <TextBox Text="{Binding Account.ProxyLogin}"
-                     Style="{StaticResource TextBoxStyleBase}" />
-            <TextBlock Text="{x:Static lang:Lang.F_Auth_ProxyPassword}"
-                       Style="{StaticResource TextBlockStyleBase}" />
-            <TextBox Text="{Binding Account.ProxyPassword}"
-                     Style="{StaticResource TextBoxStyleBase}" />
-            <Separator Style="{StaticResource SeparatorStyleBase}" />
+            <Separator />
+            <TextBlock Text="{x:Static lang:Lang.F_Auth_Proxy}" />
+            <TextBox Text="{Binding Account.Proxy}" />
+            <TextBlock Text="{x:Static lang:Lang.F_Auth_ProxyLogin}" />
+            <TextBox Text="{Binding Account.ProxyLogin}" />
+            <TextBlock Text="{x:Static lang:Lang.F_Auth_ProxyPassword}" />
+            <TextBox Text="{Binding Account.ProxyPassword}" />
+            <Separator />
         </StackPanel>
 
-        <TextBlock Text="{x:Static lang:Lang.F_Auth_Server}"
-                   Style="{StaticResource TextBlockStyleBase}" />
-        <ComboBox Style="{StaticResource ComboBoxStyleBase}"
-                  ItemsSource="{Binding Servers}"
+        <TextBlock Text="{x:Static lang:Lang.F_Auth_Server}" />
+        <ComboBox ItemsSource="{Binding Servers}"
                   SelectedItem="{Binding Account.Server}"
                   SelectedIndex="0">
             <ComboBox.ItemTemplate>
@@ -82,6 +74,6 @@
         </ComboBox>
 
         <Button Content="{x:Static lang:Lang.F_Enter}"
-                Style="{StaticResource ButtonStyleBase}" />
+                Command="{Binding AuthCommand}" />
     </StackPanel>
 </Window>

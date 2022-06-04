@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LowadiBot.ViewModels.Pages;
 using LowadiBot.ViewModels.Windows;
 
 namespace LowadiBot.Views.Windows
@@ -27,11 +28,12 @@ namespace LowadiBot.Views.Windows
             this.DataContext = new AuthWindowViewModel();
         }
 
-        public SecureString SecurePassword => PasswordText.SecurePassword;
-
-
         private void PasswordBox_OnPasswordChanged(object sender, RoutedEventArgs e)
         {
+            if (this.DataContext != null)
+            {
+                ((AuthWindowViewModel)this.DataContext).Account.Password = ((PasswordBox)sender).Password;
+            }
         }
     }
 }

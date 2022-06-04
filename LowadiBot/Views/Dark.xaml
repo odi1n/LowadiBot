@@ -109,16 +109,16 @@
                 <Setter Property="BorderBrush" Value="#FF2C628B"/>
             </Trigger>
         </Style.Triggers>
-    </Style>
-
-    <Style TargetType="ComboBox" x:Key="ComboBoxStyle">
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-        <Setter Property="Background" Value="#fff"/>
-        <Setter Property="Foreground" Value="#333"/>
-        <Setter Property="Margin" Value="0,5"/>
     </Style>-->
+
+    <!-- <Style TargetType="ComboBox" x:Key="ComboBoxStyle"> -->
+    <!--     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/> -->
+    <!--     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/> -->
+    <!--     <Setter Property="ScrollViewer.CanContentScroll" Value="true"/> -->
+    <!--     <Setter Property="Background" Value="#fff"/> -->
+    <!--     <Setter Property="Foreground" Value="#333"/> -->
+    <!--     <Setter Property="Margin" Value="0,5"/> -->
+    <!-- </Style> -->
 
 
 </ResourceDictionary>

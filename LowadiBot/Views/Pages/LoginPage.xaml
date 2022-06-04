@@ -14,8 +14,7 @@
     </Page.DataContext>
     <Page.Resources>
         <Style TargetType="{x:Type DataGridRow}">
-            <Setter Property="IsSelected"
-                    Value="{Binding IsSelected}" />
+            <Setter Property="IsSelected" Value="{Binding IsSelected}" />
         </Style>
 
         <Style TargetType="{x:Type DataGrid}">
@@ -64,9 +63,8 @@
             </Setter>
 
         </Style>
-
-
     </Page.Resources>
+
 
     <Grid>
         <Grid
@@ -102,15 +100,9 @@
                         <DataGridTextColumn Header="Пароль"
                                             Binding="{Binding Password}"
                                             Width="*" />
-                        <DataGridTextColumn Header="Прокси"
-                                            Binding="{Binding Proxy}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Прокси логин"
-                                            Binding="{Binding ProxyLogin}"
-                                            Width="*" />
-                        <DataGridTextColumn Header="Прокси пароль"
-                                            Binding="{Binding ProxyPassword}"
-                                            Width="*" />
+                        <DataGridTextColumn Header="Сохранить"
+                                            Binding="{Binding IsSave}"
+                                            Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
@@ -122,15 +114,14 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
-                        Style="{StaticResource ButtonStyleBase}"
-                        Content="{x:Static lang:Lang.F_Enter}" />
+                        Content="{x:Static lang:Lang.F_Enter}"
+                        Command="{Binding AuthAccountsCommand}" />
                 <Button Grid.Column="1"
-                        Style="{StaticResource ButtonStyleBase}"
                         Content="{x:Static lang:Lang.F_Addition}"
-                        Command="{Binding AdditioAccount}" />
+                        Command="{Binding AdditionAccountCommand}" />
                 <Button Grid.Column="2"
-                        Style="{StaticResource ButtonStyleBase}"
-                        Content="{x:Static lang:Lang.F_Remove}" />
+                        Content="{x:Static lang:Lang.F_Remove}"
+                        Command="{Binding DeleteAccountCommand}" />
             </Grid>
 
         </Grid>
