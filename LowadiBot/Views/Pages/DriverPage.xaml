@@ -1,0 +1,103 @@
+﻿<Page x:Class="LowadiBot.Views.Pages.DriverPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:LowadiBot.Views.Pages"
+      mc:Ignorable="d"
+
+      Title="DriverPage"
+
+      d:DesignHeight="650" d:DesignWidth="650">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Column="0" Grid.Row="0"
+                  Margin="5"
+                  Header="Количество аккаунтов: 0">
+            <ListBox />
+        </GroupBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="0"
+                    VerticalAlignment="Center">
+            <Button Content="Войти в СОУ" />
+            <Button Content="Сохранить СОУ" />
+            <Button Content="Настройки" />
+            <Button Content="Управление аккаунтом" />
+            <Button Content="Открыть статус" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="0"
+                    VerticalAlignment="Center"
+                    Margin="5">
+            <TextBlock Margin="0,5"
+                       Text="Имя:" />
+            <TextBlock Margin="0,5"
+                       Text="Пропуски:" />
+            <TextBlock Margin="0,5"
+                       Text="ОР:" />
+            <TextBlock Margin="0,5"
+                       Text="Экю:" />
+            <TextBlock Margin="0,5"
+                       Text="Фураж:" />
+            <TextBlock Margin="0,5"
+                       Text="Овес:" />
+            <TextBlock Margin="0,5"
+                       Text="Навоз:" />
+            <TextBlock Margin="0,5"
+                       Text="Пшеница:" />
+        </StackPanel>
+
+        <GroupBox Grid.Column="0" Grid.Row="1"
+                  Margin="5"
+                  Header="Заводы">
+            <ListBox />
+        </GroupBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="1"
+                    VerticalAlignment="Center">
+            <Button Content="+"
+            Width="35" Height="35"/>
+            <Button Content="-"
+             Width="35" Height="35"/>
+            <Button Content="UPD"
+            Width="35" Height="35"/>
+        </StackPanel>
+
+
+        <GroupBox Grid.Column="2" Grid.Row="1"
+                  Margin="5"
+                  Header="Очередь">
+            <ListBox />
+        </GroupBox>
+
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="3"
+              Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Прогнать" />
+            <Button Grid.Column="1"
+                    Content="Остановить" />
+            <Button Grid.Column="2"
+                    Content="Прогнать все" />
+            <Button Grid.Column="3"
+                    Content="Остановить все" />
+        </Grid>
+    </Grid>
+</Page>
